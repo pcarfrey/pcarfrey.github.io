@@ -29,7 +29,22 @@
 <!-- ============================================================== -->
             <section>
                 <section>
-                    <h1>pcarfrey</h1></section>
+                    <h3>Skinny jeans, ironic mustaches &amp; TypeScript: Engineering in the new web.</h3>
+                    <h6>Patrick Carfrey</h6>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>About myself</h3>
+                    <h6 class="fragment">Consultant at Fusion Alliance</h6>
+                    <h6 class="fragment">Studied at The Ohio State University College of Engineering</h6>
+                </section>
+                <section>
+                    <h3>Agenda</h3>
+                    <h6>Introduction to TypeScript</h6>
+                    <h6>Getting started</h6>
+                    <h6>Example Application</h6>
+                </section>
             </section>
             <section>
                 <section>
@@ -146,6 +161,7 @@
                     </span>
                 </section>
                 <section>
+                    <p>Example in JavaScript</p>
                    <span data-markdown>
                    <script type="text/template">
         
@@ -164,8 +180,8 @@
                    </span>
                 </section>
                 <section>
-                    <img src="img/ts-typechecking.png" alt="ts-typechecking">
-                    <p class="fragment">Implicit typing.</p>
+                    <img src="img/ts-typechecking.png" alt="ts-typechecking" style="width: 100%; max-width: 600px;">
+                    <p class="fragment">Note: implicit typing.</p>
                 </section>
             </section>
             <section>
@@ -387,23 +403,67 @@
                     </span>
                 </section>
                 <section>
-                    <p>Modules</p>
+                    <p>Namespaces (previously Modules)</p>
                     <span data-markdown>
                             <script type="text/template">
         
-                        module Vehicles {
+                        namespace Vehicles {
                             export class Car {
-
+                                //...
                             }
 
                             class Truck {
-
+                                //...
                             }
                         }
 
                         let car = new Vehicles.Car();
     </script>
                     </span>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Getting Started</h3>
+                    <h6>Setting up your develop environment.</h6>
+                </section>
+                <section>
+                    <p>Node.js, node package manager npm</p>
+                    <p class="fragment">TypeScript compiler 'npm install -g typescript'</p>
+                    <p class="fragment">Start coding in TypeScript, files with .ts extension (or change existing .js to .ts)</p>
+                    <p class="fragment">Compiling TypeScript 'tsc filename.ts'</p>
+                    <p class="fragment">Resulting code is pure JavaScript (.js file or files)</p>
+                </section>
+                <section>
+                    <p>Debugging</p>
+                    <p class="fragment">Source maps, .map extension</p>
+                </section>
+                <section>
+                    <p>Configuring the compiler</p>
+                    <p class="fragment">tsconfig.json</p>
+                    <span class="fragment" data-markdown>
+                            <script type="text/template">
+
+                        {
+                        "compilerOptions": {
+                        "module": "commonjs",
+                        "noImplicitAny": true,
+                        "removeComments": true,
+                        "preserveConstEnums": true,
+                        "outDir": "../../built/local",
+                        "sourceMap": true
+                        }
+                        }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Working with third-party JavaScript libraries.</p>
+                    <p class="fragment">Definition files, .d.ts extension</p>
+                    <p class="fragment">Only used during development and compile time</p>
+                    <p class="fragment">Suggested repository, definitelytyped.org</p>
+                    <p class="fragment">TypeScript Definition Manager 'npm install -g tsd'</p>
+                    <p class="fragment">'tsd install angular --save'</p>
                 </section>
             </section>
 <!-- ============================================================== -->
