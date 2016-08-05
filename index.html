@@ -53,7 +53,12 @@
                 </section>
                 <section>
                     <p>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.</p>
-                    <p class="fragment">Any browser. Any host. Any OS. Open source.</p>
+                    <p class="fragment">Any browser. Any host. Any OS.</p>
+                </section>
+                <section>
+                    <img src="img/logo-microsoft.jpg" alt="ts-typechecking" style="width: 100%; max-width: 300px;">
+                    <img src="img/logo-google.jpg" alt="ts-typechecking" style="width: 100%; max-width: 300px;">
+                    <p>Free, open source, developed and maintained by Microsoft.</p>
                 </section>
             </section>
             <section>
@@ -104,8 +109,19 @@
             </section>
             <section>
                 <section>
+                    <p>TypeScript Features, high level</p>
+                    <span class="fragment">
+                        <p>Static typing: basic, custom</p>
+                        <p>OOP: interfaces, classes, generics, enums, arrow functions, namespacing, and more.</p>
+                    </span>
+                </section>
+            </section>
+            <section>
+                <section>
                     <p>TypeScript supports static typing.</p>
-                    <p class="fragment">Basic types: string, number, boolean, array, enum, any.</p>
+                    <span class="fragment">
+                        <p>Basic types: string, number, boolean.</p>
+                        <p>Custom: array, enum, any.</p>
                 </section>
                 <section>
                     <p>String</p>
@@ -161,27 +177,47 @@
                     </span>
                 </section>
                 <section>
-                    <p>Example in JavaScript</p>
+                    <p>JavaScript without typing.</p>
                    <span data-markdown>
                    <script type="text/template">
         
-                        var age = 20;
-                        console.log(age);
-                        age = '30';
-                        console.log(age);
+                    var user = {"name": "John", "age": "30"};
+                    
+                    var age = user.age;
+                    console.log(age);
                         </script>
                    </span>
                    <span data-markdown class="fragment">
                    <script type="text/template">
         
-                        age += 1;
-                        console.log(age);
+                    age += 1;
+                    console.log(age);
                         </script>
                    </span>
                 </section>
                 <section>
                     <img src="img/ts-typechecking.png" alt="ts-typechecking" style="width: 100%; max-width: 600px;">
                     <p class="fragment">Note: implicit typing.</p>
+                </section>
+                <section>
+                   <p>Typing overview.</p>
+                    <span data-markdown>
+                   <script type="text/template">
+        
+                let x = 5; //number, implicit
+                let str = "Hello, M3!"; // string, implicit
+                str = x; // error
+                
+                let isTrue : boolean; // boolean, explicit
+                let isFalse : boolean = false; // boolean, explicit
+
+                let user = new User(); // custom type User
+
+                let n; // any, implicit
+                n = 5;
+                n = "string?"; // this is okay
+                        </script>
+                   </span>
                 </section>
             </section>
             <section>
@@ -421,11 +457,69 @@
     </script>
                     </span>
                 </section>
+                <section>
+                   <p>var, let, const</p>
+                   <p class="fragment">var : function scoped</p>
+                   <p class="fragment">let : block scoped</p>
+                   <p class="fragment">const : immutable, block scoped</p>
+                   <p class="fragment">Rule of thumb :  const > let > var</p>
+                </section>
+                <section>
+                    <p>Function Scoping</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                        function foo() {
+                            for (var i = 0; i < 10; i++) {
+                                // do something
+                            }
+                            console.log(i);
+                        }
+
+                        foo(); // 10
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Block Scoping</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                        function foo2() {
+                            for (let i = 0; i < 10; i++) {
+                                // do something
+                            }
+                            console.log(i); // error
+                        }
+
+                        foo2();
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Arrow Functions</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                    var sqr = function (x) { return x * x; };
+
+                    let sqr = (x) => {return x*x;};
+
+                    let sqr = x => x*x;
+    </script>
+                    </span>
+                </section>
             </section>
             <section>
                 <section>
                     <h3>Getting Started</h3>
                     <h6>Setting up your develop environment.</h6>
+                </section>
+                <section>
+                    <p>IDE support: </p>
+                    <p class="fragment">Visual Studio and Visual Studio Code</p>
+                    <p class="fragment">WebStorm and IntelliJ</p>
+                    <p class="fragment">Atom, Sublime</p>
                 </section>
                 <section>
                     <p>Node.js, node package manager npm</p>
