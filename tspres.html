@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>M3</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+<!-- ============================================================== -->
+            <section>
+                <section>
+                    <h3>Skinny jeans, ironic mustaches &amp; TypeScript: Engineering in the new web.</h3>
+                    <h6>Patrick Carfrey</h6>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>About myself</h3>
+                    <h6 class="fragment">Consultant at Fusion Alliance</h6>
+                    <h6 class="fragment">Studied at The Ohio State University College of Engineering</h6>
+                </section>
+                <section>
+                    <h3>Agenda</h3>
+                    <h6>Introduction to TypeScript</h6>
+                    <h6>Getting started</h6>
+                    <h6>Example Application</h6>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1>TypeScript</h1>
+                    <p class="fragment">JavaScript that scales.</p>
+                </section>
+                <section>
+                    <p>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.</p>
+                    <p class="fragment">Any browser. Any host. Any OS.</p>
+                </section>
+                <section>
+                    <img src="img/logo-microsoft.jpg" alt="ts-typechecking" style="width: 100%; max-width: 300px;">
+                    <img src="img/logo-google.jpg" alt="ts-typechecking" style="width: 100%; max-width: 300px;">
+                    <p>Free, open source, developed and maintained by Microsoft.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <p>TypeScript compiles to plain JavaScript.</p>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+        
+    class Person {
+
+        private id : number;
+        private firstName : string;
+        private isStudent : boolean;
+
+        constructor(id : number, firstName : string, isStudent : boolean){
+            this.id = id;
+            this.firstName = firstName;
+            this.isStudent = isStudent;
+        }
+
+        sayHello() : string {
+            return `Hello, my name is ${this.firstName}`;
+        }
+    }
+    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+        
+    var Person = (function () {
+        function Person(id, firstName, isStudent) {
+            this.id = id;
+            this.firstName = firstName;
+            this.isStudent = isStudent;
+        }
+        Person.prototype.sayHello = function () {
+            return "Hello, my name is " + this.firstName;
+        };
+        return Person;
+    }());
+    </script>
+                </section>
+                <section>
+                    <p>TypeScript will work on any browser that supports JavaScript.</p>
+                    <p class="fragment">Works with existing JavaScript projects and third-party libraries.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <p>TypeScript Features, high level</p>
+                    <span class="fragment">
+                        <p>Static typing: basic, custom</p>
+                        <p>OOP: interfaces, classes, generics, enums, arrow functions, namespacing, and more.</p>
+                    </span>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <p>TypeScript supports static typing.</p>
+                    <span class="fragment">
+                        <p>Basic types: string, number, boolean.</p>
+                        <p>Custom: array, enum, any.</p>
+                </section>
+                <section>
+                    <p>String</p>
+                    <span data-markdown>
+                            <script type="text/template">
+
+                        let color: string = "blue";
+                        color = 'red';
+                        </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Number</p>
+                    <span data-markdown>
+                            <script type="text/template">
+
+                        let decimal: number = 6;
+                        let hex: number = 0xf00d;
+                        let binary: number = 0b1010;
+                        let octal: number = 0o744;
+                        </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Boolean</p>
+                    <span data-markdown>
+                            <script type="text/template">
+
+                        let isDone: boolean = false;
+                        </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Array</p>
+                    <span data-markdown>
+                            <script type="text/template">
+
+                    let list: number[] = [1, 2, 3];
+
+                    //or with a generic array type
+                    let list: Array<number> = [1, 2, 3];
+                        </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Enum</p>
+                    <span data-markdown>
+                            <script type="text/template">
+
+                    enum Color {Red, Green, Blue};
+                    let c: Color = Color.Green;
+                        </script>
+                    </span>
+                </section>
+                <section>
+                    <p>JavaScript without typing.</p>
+                   <span data-markdown>
+                   <script type="text/template">
+        
+                    var user = {"name": "John", "age": "30"};
+                    
+                    var age = user.age;
+                    console.log(age);
+                        </script>
+                   </span>
+                   <span data-markdown class="fragment">
+                   <script type="text/template">
+        
+                    age += 1;
+                    console.log(age);
+                        </script>
+                   </span>
+                </section>
+                <section>
+                    <img src="img/ts-typechecking.png" alt="ts-typechecking" style="width: 100%; max-width: 600px;">
+                    <p class="fragment">Note: implicit typing.</p>
+                </section>
+                <section>
+                   <p>Typing overview.</p>
+                    <span data-markdown>
+                   <script type="text/template">
+        
+                let x = 5; //number, implicit
+                let str = "Hello, M3!"; // string, implicit
+                str = x; // error
+                
+                let isTrue : boolean; // boolean, explicit
+                let isFalse : boolean = false; // boolean, explicit
+
+                let user = new User(); // custom type User
+
+                let n; // any, implicit
+                n = 5;
+                n = "string?"; // this is okay
+                        </script>
+                   </span>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <p>Object oriented constructs.</p>
+                </section>
+                <section>
+                    <p>Classes</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+    class Person {
+
+        private id : number;
+        private firstName : string;
+        private isStudent : boolean;
+
+        constructor(id : number, firstName : string, isStudent : boolean){
+            this.id = id;
+            this.firstName = firstName;
+            this.isStudent = isStudent;
+        }
+
+        sayHello() : string {
+            return `Hello, my name is ${this.firstName}`;
+        }
+    }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Class initialization</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+        let person = new Person(123, 'Patrick', true);
+
+        console.log(person.sayHello());
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Access modifiers</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+    class Person {
+
+        public id : number;
+        private firstName : string;
+        private isStudent : boolean;
+
+        constructor(id : number, firstName : string, isStudent : boolean){
+            this.id = id;
+            this.firstName = firstName;
+            this.isStudent = isStudent;
+        }
+
+        sayHello() : string {
+            return `Hello, my name is ${this.firstName}`;
+        }
+    }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Access to public properties</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+        let person = new Person(123, 'Patrick', true);
+        console.log(person.sayHello());
+        console.log(`ID = ${person.id}`);
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Promotes OOP, encapsulation</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                        getId():number {
+                            return this.id;
+                        }
+
+                        setId(value:number) {
+                            this.id = value;
+                        }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Static properties and instance members</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+    class Person {
+
+        public id : number;
+        static firstName : string;
+        private isStudent : boolean;
+
+        constructor(id : number, firstName : string, isStudent : boolean){
+            this.id = id;
+            Person.firstName = firstName;
+            this.isStudent = isStudent;
+        }
+
+        sayHello() : string {
+            return `Hello, my name is ${Person.firstName}`;
+        }
+    }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Constructors</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+        class Person {
+
+            private id : number;
+            private firstName : string;
+
+            constructor(id : number, firstName : string){
+                this.id = id;
+                this.firstName = firstName;
+            }
+        }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+    class Person {
+        constructor(private id : number, private firstName : string){}
+    }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Inheritance</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+    class Person {
+        constructor(private id:number, private name:string){}
+    }
+
+    class Student extends Person{
+        constructor(id:number, name:string, private grade:number){
+            super(id, name);
+        }
+    }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Interfaces</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                        interface IVehicle {
+                            vin : number;
+                            getMake() : string;
+                        }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                        class Car implements IVehicle {
+                            vin: number = 1010101010;
+                            getMake(): string {
+                                return 'Honda';
+                            }
+                        }
+
+                        class Truck implements IVehicle {
+                            vin: number = 1234566789;
+                            getMake(): string {
+                                return 'Ford';
+                            }
+                        }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+            let car = new Car();
+            let truck = new Truck();
+
+            console.log(`Car: ${car.vin} ${car.getMake()}`);
+            // Car: 1010101010 Honda
+
+            console.log(`Truck: ${truck.vin} ${truck.getMake()}`);
+            // Truck: 1234566789 Ford
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+            function printMake(vehicle:IVehicle):void{
+                console.log(vehicle.getMake());
+            }
+
+            printMake(car); // Honda
+            printMake(truck); // Ford
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Namespaces (previously Modules)</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                        namespace Vehicles {
+                            export class Car {
+                                //...
+                            }
+
+                            class Truck {
+                                //...
+                            }
+                        }
+
+                        let car = new Vehicles.Car();
+    </script>
+                    </span>
+                </section>
+                <section>
+                   <p>var, let, const</p>
+                   <p class="fragment">var : function scoped</p>
+                   <p class="fragment">let : block scoped</p>
+                   <p class="fragment">const : immutable, block scoped</p>
+                   <p class="fragment">Rule of thumb :  const > let > var</p>
+                </section>
+                <section>
+                    <p>Function Scoping</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                        function foo() {
+                            for (var i = 0; i < 10; i++) {
+                                // do something
+                            }
+                            console.log(i);
+                        }
+
+                        foo(); // 10
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Block Scoping</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                        function foo2() {
+                            for (let i = 0; i < 10; i++) {
+                                // do something
+                            }
+                            console.log(i); // error
+                        }
+
+                        foo2();
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Arrow Functions</p>
+                    <span data-markdown>
+                            <script type="text/template">
+        
+                    var sqr = function (x) { return x * x; };
+
+                    let sqr = (x) => {return x*x;};
+
+                    let sqr = x => x*x;
+    </script>
+                    </span>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Getting Started</h3>
+                    <h6>Setting up your develop environment.</h6>
+                </section>
+                <section>
+                    <p>IDE support: </p>
+                    <p class="fragment">Visual Studio and Visual Studio Code</p>
+                    <p class="fragment">WebStorm and IntelliJ</p>
+                    <p class="fragment">Atom, Sublime</p>
+                </section>
+                <section>
+                    <p>Node.js, node package manager npm</p>
+                    <p class="fragment">TypeScript compiler 'npm install -g typescript'</p>
+                    <p class="fragment">Start coding in TypeScript, files with .ts extension (or change existing .js to .ts)</p>
+                    <p class="fragment">Compiling TypeScript 'tsc filename.ts'</p>
+                    <p class="fragment">Resulting code is pure JavaScript (.js file or files)</p>
+                </section>
+                <section>
+                    <p>Debugging</p>
+                    <p class="fragment">Source maps, .map extension</p>
+                </section>
+                <section>
+                    <p>Configuring the compiler</p>
+                    <p class="fragment">tsconfig.json</p>
+                    <span class="fragment" data-markdown>
+                            <script type="text/template">
+
+                        {
+                        "compilerOptions": {
+                        "module": "commonjs",
+                        "noImplicitAny": true,
+                        "removeComments": true,
+                        "preserveConstEnums": true,
+                        "outDir": "../../built/local",
+                        "sourceMap": true
+                        }
+                        }
+    </script>
+                    </span>
+                </section>
+                <section>
+                    <p>Working with third-party JavaScript libraries.</p>
+                    <p class="fragment">Definition files, .d.ts extension</p>
+                    <p class="fragment">Only used during development and compile time</p>
+                    <p class="fragment">Suggested repository, definitelytyped.org</p>
+                    <p class="fragment">TypeScript Definition Manager 'npm install -g tsd'</p>
+                    <p class="fragment">'tsd install angular --save'</p>
+                </section>
+            </section>
+<!-- ============================================================== -->
+        </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            history: true,
+
+            // More info https://github.com/hakimel/reveal.js#dependencies
+            dependencies: [
+                {
+                    src: 'plugin/markdown/marked.js'
+                },
+                {
+                    src: 'plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+				]
+        });
+    </script>
+</body>
+
+</html>
